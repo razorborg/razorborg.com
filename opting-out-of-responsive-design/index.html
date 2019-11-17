@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>&quot;Opting out&quot; of Responsive Design</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.css?v=fba8f742ae" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://razorborg.com/opting-out-of-responsive-design/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://razorborg.com/opting-out-of-responsive-design/amp/" />
+    
+    <meta property="og:site_name" content="razorborg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="&quot;Opting out&quot; of Responsive Design" />
+    <meta property="og:description" content="I was clicking through some links off of Zurb’s Foundation pages this weekend
+and stumbled upon this article that was written in September:
+
+http://css-tricks.com/user-opt-out-responsive-design/
+
+What’s funny about this is some of our story with Zazzle’s responsive redesign
+that launched over the summer.
+
+It turns out that if you do a competitive analysis of large e-commerce sites on
+smartphones, you’ll find today  that most of them have a “View Full Site” link
+somewhere that sends you to, well," />
+    <meta property="og:url" content="https://razorborg.com/opting-out-of-responsive-design/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2013-12-08T07:46:48.000Z" />
+    <meta property="article:modified_time" content="2019-05-04T03:33:26.000Z" />
+    <meta property="article:tag" content="UI Engineering" />
+    <meta property="article:tag" content="Design" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="&quot;Opting out&quot; of Responsive Design" />
+    <meta name="twitter:description" content="I was clicking through some links off of Zurb’s Foundation pages this weekend
+and stumbled upon this article that was written in September:
+
+http://css-tricks.com/user-opt-out-responsive-design/
+
+What’s funny about this is some of our story with Zazzle’s responsive redesign
+that launched over the summer.
+
+It turns out that if you do a competitive analysis of large e-commerce sites on
+smartphones, you’ll find today  that most of them have a “View Full Site” link
+somewhere that sends you to, well," />
+    <meta name="twitter:url" content="https://razorborg.com/opting-out-of-responsive-design/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Jan Borgersen" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="UI Engineering, Design" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="720" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "razorborg",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://razorborg.com/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jan Borgersen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/553d4450baa2ea6e12c0543298247983?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://razorborg.com/author/jan/",
+        "sameAs": []
+    },
+    "headline": "&quot;Opting out&quot; of Responsive Design",
+    "url": "https://razorborg.com/opting-out-of-responsive-design/",
+    "datePublished": "2013-12-08T07:46:48.000Z",
+    "dateModified": "2019-05-04T03:33:26.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 1080,
+        "height": 720
+    },
+    "keywords": "UI Engineering, Design",
+    "description": "I was clicking through some links off of Zurb’s Foundation pages this weekend\nand stumbled upon this article that was written in September:\n\nhttp://css-tricks.com/user-opt-out-responsive-design/\n\nWhat’s funny about this is some of our story with Zazzle’s responsive redesign\nthat launched over the summer.\n\nIt turns out that if you do a competitive analysis of large e-commerce sites on\nsmartphones, you’ll find today  that most of them have a “View Full Site” link\nsomewhere that sends you to, well,",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://razorborg.com/"
+    }
+}
+    </script>
+
+    <script src="/public/ghost-sdk.min.js?v=fba8f742ae"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "883c49edc406"
+});
+</script>
+    <meta name="generator" content="Ghost 2.37" />
+    <link rel="alternate" type="application/rss+xml" title="razorborg" href="https://razorborg.com/rss/" />
+    <style>
+    .site-header { background-color:#000; }
+</style>
+
+</head>
+<body class="post-template tag-ui-engineering tag-design">
+
+    <div class="site-wrapper">
+
+        
+
+<header class="site-header outer">
+    <div class="inner">
+        <style type="text/css">
+.site-header {
+    background-image: url(/content/images/size/w600/2019/05/lucas-benjamin-729304-unsplash.jpg);
+}
+</style>
+<nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="https://razorborg.com">razorborg</a>
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="https://razorborg.com/">Home</a></li>
+    <li class="nav-about" role="menuitem"><a href="https://razorborg.com/about/">About</a></li>
+    <li class="nav-borg-live" role="menuitem"><a href="https://borg.live">borg.live</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+        </div>
+            <a class="rss-button" href="https://feedly.com/i/subscription/feed/https://razorborg.com/rss/" title="RSS" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer">
+    <div class="inner">
+
+        <article class="post-full post tag-ui-engineering tag-design ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2013-12-08">2013 December 8</time>
+                        <span class="date-divider">/</span> <a href="/tag/ui-engineering/">UI Engineering</a>
+                        <span class="date-divider">/</span> <a href="/tag/design/">Design</a>
+
+                </section>
+                <h1 class="post-full-title">&quot;Opting out&quot; of Responsive Design</h1>
+            </header>
+
+            <figure class="post-full-image">
+                <img
+                    srcset="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                            https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                            https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                            https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+                    sizes="(max-width: 800px) 400px,
+                            (max-width: 1170px) 700px,
+                            1400px"
+                    src="https://images.unsplash.com/photo-1508921340878-ba53e1f016ec?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+                    alt="&quot;Opting out&quot; of Responsive Design"
+                />
+            </figure>
+
+            <section class="post-full-content">
+                <div class="post-content">
+                    <!--kg-card-begin: markdown--><!--kg-card-begin: markdown--><p>I was clicking through some links off of Zurb&rsquo;s Foundation pages this weekend and stumbled upon this article that was written in September:</p>
+<p><a href="http://css-tricks.com/user-opt-out-responsive-design/">http://css-tricks.com/user-opt-out-responsive-design/</a></p>
+<p>What&rsquo;s funny about this is some of our story with Zazzle&rsquo;s responsive redesign that launched over the summer.</p>
+<p>It turns out that if you do a competitive analysis of large e-commerce sites on smartphones, you&rsquo;ll find <em>today</em> that most of them have a &ldquo;View Full Site&rdquo; link somewhere that sends you to, well, the full website, which you can then pinch-and-zoom all you like.  As a developer (and my designers agree), I rationalize this that a) these sites started doing a &ldquo;mobile&rdquo; friendly site some years ago, before we learned how to build a &ldquo;responsive&rdquo; site, b) the &ldquo;mobile&rdquo; friendly sites strip out a LOT of the content and interactivity of the full site, and c) it&rsquo;s possible these companies (especially the bigger ones) have entirely separate teams (possibly entirely separate agencies) working on each of these experiences.  The &ldquo;responsive&rdquo; hype really only caught on the end of last year, so this is the year we&rsquo;re beginning to see folks doing &ldquo;future-proof&rdquo; website design, and we anticipate that many of these sites will change how this works in the coming months.</p>
+<p>This becomes an educational issue with non-technical folks who are used to seeing &ldquo;View Full Site&rdquo; links on their phones.  Regular users don&rsquo;t actually care that we&rsquo;re &ldquo;building for the future&rdquo; or that &ldquo;Responsive is the way to do it!&rdquo;  They have some expectations, and if your smartphone design fails them, they want to click &ldquo;View Full Site&rdquo; and feel like they&rsquo;re at their desktop.</p>
+<p>More to the point, if you find yourself repeatedly having to explain what a &ldquo;breakpoint&rdquo; is, and why we took away pinch-and-zoom from you because <strong><italics>the mobile site is the same as the full site!</italics></strong>, there&rsquo;s something wrong with your design.</p>
+<p>Which leads me to my primary learning this year:</p>
+<p><strong>Implementing a &ldquo;responsive&rdquo; site is easy.<br/>
+Designing a &ldquo;responsive&rdquo; site is <i>HARD.</i></strong></p>
+<p>Responsive sites have to scale in multiple dimensions, and they have to be legible across lots of screen sizes and pixel densities.  Samsung devices alone hit 4&quot;, 5&quot; 7&quot;, 8&quot;, and 10&quot;.  Set your breakpoint at 768 css pixels and your iPad renders like a desktop in portrait mode, but your Galaxy Tab renders like a smartphone in portrait and a desktop in landscape.  This implies that breakpoints are bad, but they&rsquo;re a really useful design crutch because a 5&quot; screen is a fundamentally different experience than a 10&quot; screen.</p>
+<p>After iterating on our designs awhile and soliciting lots and lots of feedback, we came to the conclusion that sometimes, for some folks, on some devices, being able to pinch-and-zoom was a GOOD experience.  In particular, scaling to a &ldquo;desktop-like&rdquo; experience on 7-8&quot; tablets was a clear winner over seeing radically different layouts in portrait vs landscape mode.  Perhaps, with a lot of iteration and work, we could tune our experiences so that this does&rsquo;t matter, but we&rsquo;re simply not there now.</p>
+<p>So why not bring back the &ldquo;View Full Site&rdquo; link?</p>
+<p>I gave up on my idealism when I started learning SEO, why should I be a purist with such a nascent new way of building things?</p>
+<p>The technical solution was straightforward &hellip; we did almost exactly what the article describes:  Add a link, drop a cookie with the user preference, and change our META VIEWPORT tag to force a screen width of 1024 css pixels (this happens to be the landscape width of an iPad), scale to the device width, and allow user-scaling. We also default all tablets to this mode.</p>
+<p>&ldquo;View Full Site&rdquo; is, of course, a misnomer, but one couched in user expectations.  For us it means &ldquo;give me a scalable fixed-width site to pinch.&rdquo;  Our other adaptive mobile optimizations (native droplists instead of DHTML, fewer search results per page) still happen.</p>
+<p>And does feel like a &ldquo;Full Site&rdquo; experience.  Which, ironically, is kinda the point of Responsive Design.</p><!--kg-card-end: markdown--><!--kg-card-end: markdown-->
+                </div>
+            </section>
+
+
+            <footer class="post-full-footer">
+
+
+                    
+<section class="author-card">
+        <img class="author-profile-image" src="//www.gravatar.com/avatar/553d4450baa2ea6e12c0543298247983?s&#x3D;250&amp;d&#x3D;mm&amp;r&#x3D;x" alt="Jan Borgersen" />
+    <section class="author-card-content">
+        <h4 class="author-card-name"><a href="/author/jan/">Jan Borgersen</a></h4>
+            <p>Read <a href="/author/jan/">more posts</a> by this author.</p>
+    </section>
+</section>
+<div class="post-full-footer-right">
+    <a class="author-card-button" href="/author/jan/">Read More</a>
+</div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card"
+                        style="background-image: url(https://images.unsplash.com/photo-1517778991803-3fa8c9341083?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ)"
+                >
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">&mdash; razorborg &mdash;</small>
+                        <h3 class="read-next-card-header-title"><a href="/tag/ui-engineering/">UI Engineering</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="/react-graphql-relay-performance-on-facebook-com/">ReactJS+GraphQL+Relay Performance on Facebook.com</a></li>
+                            <li><a href="/the-problem-with-amazon-music-on-pc/">The Problem with Amazon Music (on PC)</a></li>
+                            <li><a href="/fun-talk-from-a-couple-of-weeks-ago-at-netflix/">Fun talk from a couple of weeks ago at Netflix about Reactive Extensions in Javascript.</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="/tag/ui-engineering/">See all 13 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post ">
+
+    <a class="post-card-image-link" href="/ira-glass-on-creative-work/">
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1542209784-f9702e6ade53?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                    https://images.unsplash.com/photo-1542209784-f9702e6ade53?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                    https://images.unsplash.com/photo-1542209784-f9702e6ade53?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                    https://images.unsplash.com/photo-1542209784-f9702e6ade53?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            src="https://images.unsplash.com/photo-1542209784-f9702e6ade53?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+            alt="Ira Glass on Creative Work"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/ira-glass-on-creative-work/">
+
+            <header class="post-card-header">
+                <span class="post-card-tags">
+                    <span class="post-card-date">6 years ago</span>
+                </span>
+                <h2 class="post-card-title">Ira Glass on Creative Work</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>I love Ira Glass’ message here about knowing what’s good, and knowing it takes a lot of hard work to get there. Here in Silicon Valley it is easy to get sucked</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Jan Borgersen
+                    </div>
+
+                        <a href="/author/jan/" class="static-avatar">
+                            <img class="author-profile-image" src="//www.gravatar.com/avatar/553d4450baa2ea6e12c0543298247983?s&#x3D;250&amp;d&#x3D;mm&amp;r&#x3D;x" alt="Jan Borgersen" />
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">1 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+                <article class="post-card post tag-ui-engineering tag-ebay tag-zazzle ">
+
+    <a class="post-card-image-link" href="/the-great-webdev-debates/">
+        <img class="post-card-image"
+            srcset="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 300w,
+                    https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 600w,
+                    https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 1000w,
+                    https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ 2000w"
+            sizes="(max-width: 1000px) 400px, 700px"
+            src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ"
+            alt="The Great WebDev Debates"
+        />
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/the-great-webdev-debates/">
+
+            <header class="post-card-header">
+                <span class="post-card-tags">
+                        UI Engineering / 
+                    <span class="post-card-date">6 years ago</span>
+                </span>
+                <h2 class="post-card-title">The Great WebDev Debates</h2>
+            </header>
+
+            <section class="post-card-excerpt">
+                <p>The Great WebDev DebatesThanks to everyone who came to the Great WebDeb Debate tonight!  It was great fun to be on a panel with such important folks in our field, and it was</p>
+            </section>
+
+        </a>
+
+        <footer class="post-card-meta">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+
+                    <div class="author-name-tooltip">
+                        Jan Borgersen
+                    </div>
+
+                        <a href="/author/jan/" class="static-avatar">
+                            <img class="author-profile-image" src="//www.gravatar.com/avatar/553d4450baa2ea6e12c0543298247983?s&#x3D;250&amp;d&#x3D;mm&amp;r&#x3D;x" alt="Jan Borgersen" />
+                        </a>
+                </li>
+            </ul>
+
+            <span class="reading-time">1 min read</span>
+
+        </footer>
+
+    </div>
+
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://razorborg.com">
+            <span>razorborg</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">&quot;Opting out&quot; of Responsive Design</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%22Opting%20out%22%20of%20Responsive%20Design&amp;url=https://razorborg.com/opting-out-of-responsive-design/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://razorborg.com/opting-out-of-responsive-design/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+        </a>
+    </div>
+    <progress id="reading-progress" class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://razorborg.com">razorborg</a> &copy; 2019</section>
+                <nav class="site-footer-nav">
+                    <a href="https://razorborg.com">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script>
+        var images = document.querySelectorAll('.kg-gallery-image img');
+        images.forEach(function (image) {
+            var container = image.closest('.kg-gallery-image');
+            var width = image.attributes.width.value;
+            var height = image.attributes.height.value;
+            var ratio = width / height;
+            container.style.flex = ratio + ' 1 0%';
+        })
+    </script>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/built/jquery.fitvids.js?v=fba8f742ae"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('#reading-progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+
+});
+</script>
+
+
+    
+
+</body>
+</html>

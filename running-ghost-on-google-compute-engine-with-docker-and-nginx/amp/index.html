@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+
+    <title>Running Ghost on Google Compute Engine with Docker and Nginx</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="canonical" href="https://razorborg.com/running-ghost-on-google-compute-engine-with-docker-and-nginx/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="razorborg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Running Ghost on Google Compute Engine with Docker and Nginx" />
+    <meta property="og:description" content="This post is about how I got Ghost running on a Google Compute Engine VM using
+Docker and Nginx. This powers this blog now, along with a couple of others.
+
+Intro
+I&#x27;ve spent time recently playing with blogging software again... It seems like
+every few years I go through this. I&#x27;ve run Drupal, I&#x27;ve run Wordpress, I had a
+server hacked in the days long before Cloud that scared me over to PAAS
+solutions like Blogger and Tumblr for awhile. Then I just used Facebook, then I
+got quiet on Facebook, then" />
+    <meta property="og:url" content="https://razorborg.com/running-ghost-on-google-compute-engine-with-docker-and-nginx/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1509803874385-db7c23652552?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2019-05-04T06:15:54.000Z" />
+    <meta property="article:modified_time" content="2019-05-04T17:19:49.000Z" />
+    <meta property="article:tag" content="Cloud" />
+    <meta property="article:tag" content="Google" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Running Ghost on Google Compute Engine with Docker and Nginx" />
+    <meta name="twitter:description" content="This post is about how I got Ghost running on a Google Compute Engine VM using
+Docker and Nginx. This powers this blog now, along with a couple of others.
+
+Intro
+I&#x27;ve spent time recently playing with blogging software again... It seems like
+every few years I go through this. I&#x27;ve run Drupal, I&#x27;ve run Wordpress, I had a
+server hacked in the days long before Cloud that scared me over to PAAS
+solutions like Blogger and Tumblr for awhile. Then I just used Facebook, then I
+got quiet on Facebook, then" />
+    <meta name="twitter:url" content="https://razorborg.com/running-ghost-on-google-compute-engine-with-docker-and-nginx/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1509803874385-db7c23652552?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Jan Borgersen" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Cloud, Google" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="720" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "razorborg",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://razorborg.com/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jan Borgersen",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/553d4450baa2ea6e12c0543298247983?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://razorborg.com/author/jan/",
+        "sameAs": []
+    },
+    "headline": "Running Ghost on Google Compute Engine with Docker and Nginx",
+    "url": "https://razorborg.com/running-ghost-on-google-compute-engine-with-docker-and-nginx/",
+    "datePublished": "2019-05-04T06:15:54.000Z",
+    "dateModified": "2019-05-04T17:19:49.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1509803874385-db7c23652552?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 1080,
+        "height": 720
+    },
+    "keywords": "Cloud, Google",
+    "description": "This post is about how I got Ghost running on a Google Compute Engine VM using\nDocker and Nginx. This powers this blog now, along with a couple of others.\n\nIntro\nI&#x27;ve spent time recently playing with blogging software again... It seems like\nevery few years I go through this. I&#x27;ve run Drupal, I&#x27;ve run Wordpress, I had a\nserver hacked in the days long before Cloud that scared me over to PAAS\nsolutions like Blogger and Tumblr for awhile. Then I just used Facebook, then I\ngot quiet on Facebook, then",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://razorborg.com/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 2.37" />
+    <link rel="alternate" type="application/rss+xml" title="razorborg" href="https://razorborg.com/rss/" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
+    <style amp-custom>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{margin:0.67em 0;font-size:2em}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}amp-img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;color:inherit;font:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{margin:0 2px;padding:0.35em 0.625em 0.75em;border:1px solid #c0c0c0}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}html{max-height:100%;height:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0, 0, 0, 0)}body{max-height:100%;height:100%;color:#3a4145;background:#f4f8fb;letter-spacing:0.01rem;font-family:"Merriweather", serif;font-size:1.8rem;line-height:1.75em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"kern" 1;-moz-font-feature-settings:"kern" 1;-o-font-feature-settings:"kern" 1}::-moz-selection{background:#d6edff}::selection{background:#d6edff}h1,h2,h3,h4,h5,h6{margin:0 0 0.3em 0;color:#2e2e2e;font-family:"Open Sans", sans-serif;line-height:1.15em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-moz-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1;-o-font-feature-settings:"dlig" 1, "liga" 1, "lnum" 1, "kern" 1}h1{text-indent:-2px;letter-spacing:-1px;font-size:2.6rem}h2{letter-spacing:0;font-size:2.4rem}h3{letter-spacing:-0.6px;font-size:2.1rem}h4{font-size:1.9rem}h5{font-size:1.8rem}h6{font-size:1.8rem}a{color:#4a4a4a}a:hover{color:#111}p,ul,ol,dl{margin:0 0 2.5rem 0;font-size:1.5rem;text-rendering:geometricPrecision;-webkit-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-moz-font-feature-settings:"liga" 1, "onum" 1, "kern" 1;-o-font-feature-settings:"liga" 1, "onum" 1, "kern" 1}ol,ul{padding-left:2em}ol ol,ul ul,ul ol,ol ul{margin:0 0 0.4em 0;padding-left:2em}dl dt{float:left;clear:left;overflow:hidden;margin-bottom:1em;width:180px;text-align:right;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-bottom:1em;margin-left:200px}li{margin:0.4em 0}li li{margin:0}hr{display:block;margin:1.75em 0;padding:0;height:1px;border:0;border-top:#efefef 1px solid}blockquote{box-sizing:border-box;margin:1.75em 0 1.75em 0;padding:0 0 0 1.75em;border-left:#4a4a4a 0.4em solid;-moz-box-sizing:border-box}blockquote p{margin:0.8em 0;font-style:italic}blockquote small{display:inline-block;margin:0.8em 0 0.8em 1.5em;color:#ccc;font-size:0.9em}blockquote small:before{content:"\2014 \00A0"}blockquote cite{font-weight:700}blockquote cite a{font-weight:normal}mark{background-color:#fdffb6}code,tt{padding:1px 3px;border:#e3edf3 1px solid;background:#f7fafb;border-radius:2px;white-space:pre-wrap;font-family:Inconsolata, monospace, sans-serif;font-size:0.85em;font-feature-settings:"liga" 0;-webkit-font-feature-settings:"liga" 0;-moz-font-feature-settings:"liga" 0}pre{overflow:auto;box-sizing:border-box;margin:0 0 1.75em 0;padding:10px;width:100%;border:#e3edf3 1px solid;background:#f7fafb;border-radius:3px;white-space:pre;font-family:Inconsolata, monospace, sans-serif;font-size:0.9em;-moz-box-sizing:border-box}pre code,pre tt{padding:0;border:none;background:transparent;white-space:pre-wrap;font-size:inherit}kbd{display:inline-block;margin-bottom:0.4em;padding:1px 8px;border:#ccc 1px solid;background:#f4f4f4;border-radius:4px;box-shadow:0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset;color:#666;text-shadow:#fff 0 1px 0;font-size:0.9em;font-weight:700}table{box-sizing:border-box;margin:1.75em 0;max-width:100%;width:100%;background-color:transparent;-moz-box-sizing:border-box}table th,table td{padding:8px;border-top:#efefef 1px solid;vertical-align:top;text-align:left;line-height:20px}table th{color:#000}table caption + thead tr:first-child th,table caption + thead tr:first-child td,table colgroup + thead tr:first-child th,table colgroup + thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td{border-top:0}table tbody + tbody{border-top:#efefef 2px solid}table table table{background-color:#fff}table tbody > tr:nth-child(odd) > td,table tbody > tr:nth-child(odd) > th{background-color:#f6f6f6}table.plain tbody > tr:nth-child(odd) > td,table.plain tbody > tr:nth-child(odd) > th{background:transparent}iframe,amp-iframe,.fluid-width-video-wrapper{display:block;margin:1.75em 0}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper amp-iframe{margin:0}textarea,select,input{margin:0 0 5px 0;padding:6px 9px;width:260px;outline:0;border:#e7eef2 1px solid;background:#fff;border-radius:4px;box-shadow:none;font-family:"Open Sans", sans-serif;font-size:1.6rem;line-height:1.4em;font-weight:100;-webkit-appearance:none}textarea{min-width:250px;min-height:80px;max-width:340px;width:100%;height:auto}input[type="text"]:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="number"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="week"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,textarea:focus{outline:none;outline-width:0;border:#bbc7cc 1px solid;background:#fff}select{width:270px;height:30px;line-height:30px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}.main-header{position:relative;display:table;overflow:hidden;box-sizing:border-box;width:100%;height:50px;background:#5ba4e5 no-repeat center center;background-size:cover;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.content{background:#fff;padding-top:15px}.blog-title,.content{margin:auto;max-width:600px}.blog-title a{display:block;padding-right:16px;padding-left:16px;height:50px;color:#fff;text-decoration:none;font-family:"Open Sans", sans-serif;font-size:16px;line-height:50px;font-weight:600}.post{position:relative;margin-top:0;margin-right:16px;margin-left:16px;padding-bottom:0;max-width:100%;border-bottom:#ebf2f6 1px solid;word-wrap:break-word;font-size:0.95em;line-height:1.65em}.post-header{margin-bottom:1rem}.post-title{margin-bottom:0}.post-title a{text-decoration:none}.post-meta{display:block;margin:3px 0 0 0;color:#9eabb3;font-family:"Open Sans", sans-serif;font-size:1.3rem;line-height:2.2rem}.post-meta a{color:#9eabb3;text-decoration:none}.post-meta a:hover{text-decoration:underline}.post-meta .author{margin:0;font-size:1.3rem;line-height:1.3em}.post-date{display:inline-block;text-transform:uppercase;white-space:nowrap;font-size:1.2rem;line-height:1.2em}.post-image{margin:0;padding-top:3rem;padding-bottom:30px;border-top:1px #E8E8E8 solid}.post-content amp-img,.post-content amp-anim{position:relative;left:50%;display:block;padding:0;min-width:0;max-width:112%;width:calc(100% + 32px);height:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)}.footnotes{font-size:1.3rem;line-height:1.6em;font-style:italic}.footnotes li{margin:0.6rem 0}.footnotes p{margin:0}.footnotes p a:last-child{text-decoration:none}.site-footer{position:relative;margin:0 auto 20px auto;padding:1rem 15px;max-width:600px;color:rgba(0,0,0,0.5);font-family:"Open Sans", sans-serif;font-size:1.1rem;line-height:1.75em}.site-footer a{color:rgba(0,0,0,0.5);text-decoration:none;font-weight:bold}.site-footer a:hover{border-bottom:#bbc7cc 1px solid}.poweredby{display:block;float:right;width:45%;text-align:right}.copyright{display:block;float:left;width:45%}</style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="https://razorborg.com">razorborg</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Running Ghost on Google Compute Engine with Docker and Nginx</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="/author/jan/">Jan Borgersen</a></p>
+                    <time class="post-date" datetime="2019-05-04">2019-05-04</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1509803874385-db7c23652552?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;1080&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" width="600" height="400" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>This post is about how I got Ghost running on a Google Compute Engine VM using Docker and Nginx. This powers this blog now, along with a couple of others.</p><h2 id="intro">Intro</h2><p>I've spent time recently playing with blogging software <em>again... </em>It seems like every few years I go through this. I've run Drupal, I've run Wordpress, I had a server hacked in the days long before Cloud that scared me over to PAAS solutions like Blogger and Tumblr for awhile. Then I just used Facebook, then I got quiet on Facebook, then I got sick and we had to use Facebook to tell folks how I was, then I got better and had a lot more friends on Facebook, then I posted something "techy" that got like zero likes and I realized my Facebook friends <em>don't care</em> when I talk about software engineering, then I remembered I had a blog over here at razorborg.com, and I saw that I actually wrote a couple of interesting posts over the years, but then I realized it was still on Tumblr, which didn't make a whole lot of sense and I don't remember how it got there. But I've been learning some AWS for work and I've been playing with Google Cloud for some time after scoring some credits from attending an I/O a few years back, and I figured, why not, lets see what it takes to move this beast to something a lot more <em>modern</em>, right? So here we are.</p><p>I read a bunch of articles. I fired up some VM's. I tried some Bitnami one-click solutions. I remembered why I hate Wordpress, but why I might end up using it in the next version of my Cub Scout Pack's website.</p><p>Then I found this, which turned out to be the best tutorial I have found for running Ghost (which is <em>gorgeous</em>, and <em>clean</em>, and <em>responsive</em>, and <em>beautiful on a phone</em>, and <em>simple</em>, and just a joy out of the box) on a cloud VM:</p><blockquote><a href="https://blog.checkyo.tech/2018/06/28/ghost-docker-tutorial/">https://blog.checkyo.tech/2018/06/28/ghost-docker-tutorial/</a></blockquote><p>Aman, the author, is running on Digital Ocean, a cloud platform that I keep hearing great things about but I haven't had any professional reason (or free credits) to learn about. I have been playing with Google Cloud, however, and I know it enough to break stuff since I got my kids a cloud Minecraft server running up there last year. So why not try to get it running on Google?</p><p>Aman's tutorial rocked. And if I didn't find a few minor discrepancies on GCE, I wouldn't even be writing this post. Let's see what I did and where we diverged ...</p><h2 id="1-create-a-vm-instance-and-disks">1. Create a VM instance and disks</h2><p>I got this working just fine on a <code>f1-micro</code> instance. If you're running a single blog and you don't get much traffic, I'd say go with that. I eventually resized to "small" after I launched my third Ghost instance on this VM and got the "increase perf" warning from Google. My current setup looks like:</p><ul><li><code>ghost-1</code>: Machine Type: g1-small, running <code>Ubuntu 18.04</code></li><li><code>ghost-1</code>:Boot Disk: 10GB Standard Persistent Disk</li><li><code>ghost-content-1</code>: Data/Content Disk: 20GB Standard Persistent Disk (resizable later if necessary)</li></ul><p>Note that I created a second persistent disk, with a rule to keep the disk if the VM instance is deleted. This cleanly separates my blog content from the VM startup disk.</p><h2 id="2-install-docker">2. Install Docker</h2><p>This tutorial works just fine with Google's Cloud:</p><blockquote><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">Digital Ocean's Guide to Installing Docker on Ubuntu 18.04</a></blockquote><h2 id="3-install-nginx">3. Install Nginx</h2><p>This is where things start to diverge. Do Step 1 here. <em>Do <strong>NOT</strong> do Step 2</em>...</p><blockquote><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04">Digital Ocean's Guide to Installing Nginx on Ubuntu 18.04</a></blockquote><p>Google Compute Engine already has a firewall running outside the VM instance, so there is no need to run <code>ufw</code>. Moreover, if you do enable <code>ufw</code> and you only add the Nginx rules, <em>you will accidentally turn off SSH access to your host</em>.</p><p>Yes, I learned this the hard way.</p><h3 id="if-you-get-locked-out-">If you get locked out...</h3><p>In the unfortunate event that you lock yourself out of your VM because you firewalled the SSH port, there is a way back in. </p><ol><li>Create this bash shell script and put it somewhere on the web (like a storage bucket):</li></ol><pre><code class="language-bash">#!/bin/bash
+ufw allow ssh
+</code></pre>
+<p>2. Find your VM instance in the cloud console, and click "Edit"</p><p>3. Under "Custom metadata", add the key <code>startup-script-url</code> with the URL to your script as the value.</p><p>4. Restart your VM</p><h2 id="4-install-docker-compose">4. Install docker-compose</h2><p>We are now at "Part 1" of Aman's tutorial. My VM didn't have <code>pip</code> installed, so I went the brute-force way to get <code>docker-compose</code>, a la <a href="https://linuxize.com/post/how-to-install-and-use-docker-compose-on-ubuntu-18-04/">this article</a>:</p><pre><code class="language-bash">$ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<h2 id="5-mount-your-content-drive">5. Mount your content drive</h2><p>If you created your content drive brand new when you set up your VM, you will have to format the drive and mount it. Here are Google's docs:</p><blockquote><a href="https://cloud.google.com/compute/docs/disks/add-persistent-disk">Adding or Resizing Zonal Persistent Disks</a></blockquote><p>Skip down to <em>Formatting and mounting a zonal persistent disk</em>. </p><p>I mounted my disk at <code>/mnt/disks/ghost-content</code>.</p><h2 id="6-keep-following-aman-s-tutorial">6. Keep following Aman's tutorial</h2><p>From here on out, you can follow Aman's tutorial to get up and running. The steps are basically:</p><ol><li>Create a <code>docker-compose.yml</code> file for the site you want to host<br />Note that I am creating these files at <code>/mnt/disks/ghost-content/site-name</code></li><li>Run the <code>ghost</code> container</li><li>Configure Nginx</li><li>Add SSL by using <code>certbot</code></li></ol><p>There's a lot of chatter in blogs about setting up cron jobs to run <code>certbot</code> periodically to renew SSL certs from LetsEncrypt. By following the steps in Aman's tutorial, I was left with a <code>systemd</code> script that does this automatically.</p><h2 id="7-startup-and-auto-updating-the-ghost-image">7. Startup and auto updating the ghost image</h2><p>Aman's tutorial ends with a script that updates the <code>ghost</code> Docker image and restarts it periodically. This is brilliant because that script will run at startup as well, so if you ever need to restart your VM, your site(s) will come right back up.</p><p>I extended the <code>update.sh</code> script a bit more to do this for multiple sites, and it works just fine.</p><h2 id="8-profit">8. Profit</h2><p>The rest is up to you! </p><h2 id="ps-migrating-from-tumblr-to-ghost">PS. Migrating from Tumblr to Ghost</h2><p>If you're most folks, you're probably migrating from Wordpress. Maybe Blogger. Go you. Somehow I ended up on Tumblr years ago. Tumblr is fine, but it's use case is really not what this blog is all about.</p><p>I found this...</p><blockquote><a href="https://www.ghostforbeginners.com/how-to-import-blog-posts-from-tumblr-to-ghost/">Migrating from Tumblr to Ghost</a></blockquote><p>...and thought, cool, now I have my Tumblr posts in a JSON file! But when I went in import, I discovered my JSON file could only be read by Ghost 1.x, and I was running a 2.x build. </p><p><em>Docker to the rescue...</em></p><ol><li>I deleted all content on my content disk for this blog</li><li>I updated <code>docker-compose.yml</code> to use the <code>ghost:1-alpine</code> image</li><li><code>sudo docker-compose up</code></li><li>Once the Ghost 1.x site was up, the content imported fine</li><li>Shut down the image with <code>Ctl-C</code> and revert <code>docker-compose.yml</code> to use <code>ghost:2-alpine</code></li><li><code>sudo docker-compose up</code> again, and the 2.0 image found my content and migrated it to the 2.0 formats. This took a little while. Be patient, it'll eventually come back up.</li></ol><h2 id="pps-301-redirect-links-from-tumblr-urls">PPS: 301 Redirect links from Tumblr URLs</h2><p>I spent awhile combing through my blog posts and weeding out the bitrot by deleting posts that linked to nowhere. Ah, life on the web. Leave anything alone for awhile, and things start breaking. </p><p>Changing platforms often means a change in the default URL structures, and Ghost isn't very flexible with its URLs. If you have any posts that others may have linked to in the past, <em>please</em> do some due diligence and keep their links alive. If you don't, they will be annoyed at you one day like I just was annoyed at others. </p><p>I found this, which I suspect works great for old Wordpress links with the date in the URLs:</p><blockquote><a href="https://davidzych.com/migrating-from-wordpress-to-ghost-301-urls/">Migrating from Wordpress to Ghost: 301'ing some urls</a></blockquote><p>And hey, I'm running Nginx too! Tumblr URLs take the form <code>post/{post-id}/{post-title}</code>, so it's pretty easy to update the redirect regex to handle them. Here's the line I added to my <code>server &gt; location</code> section:</p><pre><code class="language-bash">rewrite "post/\d*/(.*)$" /$1 permanent;
+</code></pre>
+<p>That regex says: 1) Look for urls that have <code>post/</code> followed by some amount of numbers follwed by <code>/</code> and "take" everything after that slash. Post titles should appear the same in Tumbler and Ghost URLs as long as the title doesn't change, so we're good to go!</p><h2 id="afterthoughts-and-next-steps-">Afterthoughts and next steps...</h2><p>I like this setup. I'm planning to run at least 3 sites on this machine, all using Ghost, and I'm pretty happy with where things are. </p><p>Eventually I will want to publish out to static pages and front this with a CDN, but I'm not generating enough traffic to worry about that too much. </p><p>So now, to start blogging again!</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="https://razorborg.com">razorborg</a> &copy; 2019</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>
+</html>
